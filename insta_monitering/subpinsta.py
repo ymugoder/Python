@@ -18,8 +18,8 @@ def instasubprocess(user, tags, type, productId):
             + " "
             + productId
         )
-        command = child_env + " " + file_pocessing
-        result = subprocess.Popen(command, shell=True)
+        command = [child_env, os.path.join(os.getcwd(), "insta_datafetcher.py"), user, tags, type, productId]
+        result = subprocess.Popen(command)
         result.wait()
     except:
         print("error::instasubprocess>>", sys.exc_info()[1])
